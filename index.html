@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        #qrcode {
+            margin: 2rem auto;
+            display: inline-block;
+        }
+        .url {
+            margin-top: 1rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+        .error {
+            color: #d32f2f;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code</h1>
+        <div id="qrcode"></div>
+        <div class="url" id="urlDisplay"></div>
+        <div class="error" id="errorMessage"></div>
+    </div>
+
+    <script src="qrcode.min.js"></script>
+    <script>
+        // Get the page parameter from URL
+        function getPageParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('page') || '000'; // Default to '000' if no parameter
+        }
+
+        // Generate QR code
+        function generateQRCode(pageCode) {
+            const targetUrl = `https://worship.direct/${pageCode}`;
+            const qrcodeContainer = document.getElementById('qrcode');
+            const urlDisplay = document.getElementById('urlDisplay');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            try {
+                // Clear any existing QR code
+                qrcodeContainer.innerHTML = '';
+                
+                // Generate new QR code
+                new QRCode(qrcodeContainer, {
+                    text: targetUrl,
+                    width: 256,
+                    height: 256,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+                
+                // Update URL display
+                urlDisplay.textContent = `worship.direct/${pageCode}`;
+                
+                // Update page title
+                document.title = `QR Code - ${pageCode}`;
+                
+                // Clear any error message
+                errorMessage.textContent = '';
+            } catch (error) {
+                errorMessage.textContent = 'Error generating QR code. Please try again.';
+                console.error('QR Code generation error:', error);
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const pageCode = getPageParam();
+            generateQRCode(pageCode);
+        });
+    </script>
+</body>
+</html>
