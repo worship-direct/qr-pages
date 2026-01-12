@@ -11,21 +11,21 @@ This repository provides a dynamic QR code generator that creates QR codes linki
 ### Using URL Parameters (Recommended)
 Access the QR code generator using:
 ```
-index.html?page=CODE
+qr.html?page=CODE
 ```
 
 Examples:
-- `index.html?page=000` - Generates QR code for worship.direct/000
-- `index.html?page=AAA` - Generates QR code for worship.direct/AAA
-- `index.html?page=ZZZ` - Generates QR code for worship.direct/ZZZ
-- `index.html?page=123` - Generates QR code for worship.direct/123
+- `qr.html?page=000` - Generates QR code for worship.direct/000
+- `qr.html?page=AAA` - Generates QR code for worship.direct/AAA
+- `qr.html?page=ZZZ` - Generates QR code for worship.direct/ZZZ
+- `qr.html?page=123` - Generates QR code for worship.direct/123
 
 ### Using Direct HTML Files (Backward Compatibility)
 For backward compatibility with existing URLs, you can create individual HTML files (e.g., `000.html`, `AAA.html`) that redirect to the main index page with the appropriate parameter. This is only needed if you want to support legacy URLs. See `000.html` as an example.
 
 ## Features
 
-- **Dynamic Generation**: Only one page (`index.html`) needs to be maintained
+- **Dynamic Generation**: Only one page (`qr.html`) needs to be maintained
 - **Client-Side QR Generation**: Uses qrcodejs library for generating QR codes directly in the browser
 - **Automatic URL Encoding**: Correctly encodes URLs for QR code generation
 - **Responsive Design**: Clean, centered layout that works on all devices
