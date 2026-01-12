@@ -21,7 +21,7 @@ Examples:
 - `qr.html?page=123` - Generates QR code for worship.direct/123
 
 ### Using Direct HTML Files (Backward Compatibility)
-For backward compatibility with existing URLs, you can create individual HTML files (e.g., `000.html`, `AAA.html`) that redirect to the main index page with the appropriate parameter. This is only needed if you want to support legacy URLs. See `000.html` as an example.
+For backward compatibility with existing URLs, you can create individual HTML files (e.g., `000.html`, `AAA.html`) that redirect to qr.html with the appropriate parameter. This is only needed if you want to support legacy URLs. See `000.html` as an example.
 
 ## Features
 
